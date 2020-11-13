@@ -1,0 +1,11 @@
+<?xml version="1.0" en=coding = "UTF-8"?>
+<!ELEMENT fiction(book+)>
+<!ELEMENT book(title,author+,description,setting,pages,published,publisher,avg_rating)>
+<!ELEMENT title(#PCDATA)>
+<!ELEMENT author(#PCDATA)>
+<!ELEMENT description(#PCDATA)>
+<!ELEMENT setting(#PCDATA)>
+<!ELEMENT pages(#PCDATA)>
+<!ELEMENT published(#PCDATA)>
+<!ELEMENT publisher(#PCDATA)>
+<!ELEMENT avg_rating(#PCDATA)>

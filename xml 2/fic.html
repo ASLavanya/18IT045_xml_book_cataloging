@@ -1,0 +1,40 @@
+<html>
+<body>
+
+<h1 id="demo"></h1>
+
+
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.this == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+xhttp.open("GET", "fictional.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+  var parser, xmlDoc,i,txt=" ";
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xml.responseText,"text/xml");
+  var c=xmlDoc.getElementsByTagName("fiction")[0].childElementCount;
+  txt = txt + "<ol>";
+  for(i=0;i<c;i++)
+  {
+      txt = txt+"<li>"+xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue +
+      "<br>"+xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("description")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("setting")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("pages")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("published")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("publisher")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("avg_rating")[0].childNodes[0].nodeValue+
+      "</li>";
+  }
+txt = txt +"</ol>";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<h1 id="demo"></h1>
+
+
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.this == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+xhttp.open("GET", "auth.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+  var parser, xmlDoc,i,txt=" ";
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xml.responseText,"text/xml");
+  var c=xmlDoc.getElementsByTagName("fiction")[0].childElementCount;
+  txt = txt + "<ol>";
+  for(i=0;i<c;i++)
+  {
+      txt = txt+"<li>"+xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue +
+      "<br>"+xmlDoc.getElementsByTagName("lang")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("genre")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("work")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("books")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("nationality")[0].childNodes[0].nodeValue+
+      "<br>"+xmlDoc.getElementsByTagName("sales")[0].childNodes[0].nodeValue+
+      "</li>";
+  }
+txt = txt +"</ol>";
+}
+</script>
+
+</body>
+</html>
